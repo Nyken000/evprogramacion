@@ -36,13 +36,13 @@ const verificar = (id) => {
             const dia = calcularFecha(input.value)
             if (dia < 1) {
                 input.classList.add('is-invalid')
-                div.innerHTML = '<span class="badge bg-danger">No se puede contratar a futuro</span>'
+                div.innerHTML = '<span class="badge bg-danger">No se puede asignar una fecha futura</span>'
             }
         }
-        if (id == 'sueldo') {
-            if (input.value < 500000) {
+        if (id == 'premio') {
+            if (input.value < 5000) {
                 input.classList.add('is-invalid')
-                div.innerHTML = '<span class="badge bg-danger">No pagamos menos de $500.000</span>'
+                div.innerHTML = '<span class="badge bg-danger">no se puede asignar un valor menor a 5000 </span>'
             }
         }
         if (id == 'fono') {
