@@ -94,11 +94,12 @@ const añadirEventListeners = () => {
             }).then(async (result) => {
                 if (result.isConfirmed) {
                     await remove(btn.id);
+                    limpiar();
                     Swal.fire({
                         title: "Eliminado!",
                         text: "Su registro ha sido eliminado",
                         icon: "success"
-                        limpiar();
+                        //limpiar();
                     });
                 }
             });
