@@ -8,6 +8,7 @@ const limpiar = () => {
     })
     document.getElementById('run').readOnly = false
     document.getElementById('btnSave').value = 'Guardar'
+    document.getElementById('btndanger').value = 'limpiar'
 }
 
 const verificar = (id) => {
