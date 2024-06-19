@@ -1,9 +1,6 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, getFirestore, updateDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { addDoc, collection, deleteDoc, doc, getDoc, getFirestore, updateDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBrEb4RYGwqzJGEk7WYyoXAJtvEZfRg-sE",
     authDomain: "evaprogram-2f9c0.firebaseapp.com",
@@ -13,7 +10,6 @@ const firebaseConfig = {
     appId: "1:288698245885:web:cbbe2120fb5d2beece9494"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
@@ -21,13 +17,14 @@ export const save = (ganador) => {
     return addDoc(collection(db, 'ganadores'), ganador);
 }
 
-export const getData = async () => {
-    const querySnapshot = await getDocs(collection(db, 'ganadores'));
-    let data = [];
-    querySnapshot.forEach((doc) => {
-        data.push({ id: doc.id, data: doc.data() });
+export const getData = (callback) => {
+    onSnapshot(collection(db, 'ganadores'), (snapshot) => {
+        const data = [];
+        snapshot.forEach(doc => {
+            data.push({ id: doc.id, data: doc.data() });
+        });
+        callback(data);
     });
-    return data;
 }
 
 export const remove = (id) => {
