@@ -18,7 +18,7 @@ const verificar = (id) => {
         input.classList.add('is-invalid')
         div.innerHTML = '<span class="badge bg-danger">El campo es obligatorio</span>'
     } else {
-        input.classList.add('is-valid') 
+        input.classList.add('is-valid')
         div.innerHTML = ''
         if (id == 'run') {
             if (!validaRun(input.value.trim())) {
@@ -42,13 +42,19 @@ const verificar = (id) => {
         if (id == 'premio') {
             if (input.value < 5000) {
                 input.classList.add('is-invalid')
-                div.innerHTML = '<span class="badge bg-danger">no se puede asignar un valor menor a 5000 </span>'
+                div.innerHTML = '<span class="badge bg-danger">No se puede asignar un valor menor a 5000</span>'
             }
         }
         if (id == 'fono') {
             if (input.value.length != 9) {
                 input.classList.add('is-invalid')
-                div.innerHTML = '<span class="badge bg-danger">Debe tener 9 dígitos </span>'
+                div.innerHTML = '<span class="badge bg-danger">Debe tener 9 dígitos</span>'
+            }
+        }
+        if (id == 'division') {
+            if (input.value === '') {
+                input.classList.add('is-invalid')
+                div.innerHTML = '<span class="badge bg-danger">Debe seleccionar una opción</span>'
             }
         }
     }
